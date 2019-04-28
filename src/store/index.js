@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    url:''
+    url:'',
+    linkData:{}
 }
 
 const getters = {   
@@ -17,8 +18,8 @@ const getters = {
 };
 
 const mutations = {
-    changeUrl(data){
-        url = data;
+    showLinkdetail (state,data) {
+      state.data = data
     }
 }
 const store = new Vuex.Store({

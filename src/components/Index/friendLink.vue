@@ -81,7 +81,7 @@
             width="180">
             <template slot-scope="scope">
               <el-button @click="handleClick(scope.row)" type="text" size="small">
-                <router-link :to="{name:'linkDetail',params:{id:scope.row}}" class="look">
+                <router-link :to="{name:'linkDetail',params:{id:scope.row.id}}" class="look">
                   查看
                 </router-link>
               </el-button>
@@ -169,9 +169,8 @@ export default {
 
     //查看列表详情
     handleClick(data){
-      console.log(data)
-    },
 
+    },
 
     //从数据库查询并删除列表
     delete(data){
@@ -246,5 +245,8 @@ export default {
   }
   .look{
     color: #409EFF;
+    &:hover{
+      color: #409EFF;
+    }
   }
 </style>

@@ -26,7 +26,7 @@ let router =  new Router({
     // 首页
     { path: '/index', meta: {title:'首页'}, component: index },
     { path: '/friendLink', meta: {title:'友情链接'}, component: friendLink },
-    { name: 'linkDetail', path: '/friendLink:id', meta: {title: '查看链接'}, component: linkDetail, props: true},
+    { name: 'linkDetail', path: '/friendLink/:id', meta: {title: '查看链接'}, component: linkDetail, props: true},
     
     //装修学堂
     { path: '/school', meta: {title:'装修学堂'}, component: school},

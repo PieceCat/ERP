@@ -27,5 +27,7 @@ export default {
   html,body{
     margin: 0;
   };
-  
+  .el-container{
+    padding-top: 15px;
+  }
 </style>
