@@ -43,6 +43,7 @@
         <!-- 搜索列表  -->
         <el-table
           :data="newArr"
+          v-loading="loading"
           style="width: 100%">
           <el-table-column
             prop="id"
@@ -79,7 +80,11 @@
             label="操作"
             width="180">
             <template slot-scope="scope">
-              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+              <el-button @click="handleClick(scope.row)" type="text" size="small">
+                <router-link :to="{name:'linkDetail',params:{id:scope.row}}" class="look">
+                  查看
+                </router-link>
+              </el-button>
               <el-button type="text" size="small">编辑</el-button>
               <el-button @click="del(scope.row.id)"  type="text" size="small">删除</el-button>
             </template>
@@ -118,6 +123,7 @@ export default {
       pageSize: 10,       //每页数量
       newArr:[],          
       linkList:[],
+      loading: true,
       id:'',
       site:'',
       linkType:'',
@@ -158,6 +164,7 @@ export default {
     pager(currentPage){
       //如果总数大于10
       this.newArr = this.linkList.slice((currentPage-1)*this.pageSize,currentPage*this.pageSize)
+      this.loading = false
     },
 
     //查看列表详情
@@ -236,5 +243,8 @@ export default {
     text-align: center;
     line-height: 40px;
     height: 40px;
+  }
+  .look{
+    color: #409EFF;
   }
 </style>

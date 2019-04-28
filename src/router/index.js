@@ -5,6 +5,7 @@ import Router from 'vue-router'
 //首页
 import index from '@/components/Index/index'
 import friendLink from '@/components/Index/friendLink'
+import linkDetail from '@/components/Index/linkDetail'
 
 //装修学堂
 import school from '@/components/School/school'
@@ -23,18 +24,19 @@ let router =  new Router({
   routes: [
     { path: '/', redirect: '/index' },
     // 首页
-    { path: '/index', name: 'index', meta: {title:'首页'}, component: index },
-    { path: '/friendLink', name: 'friendLink', meta: {title:'友情链接'}, component: friendLink },
+    { path: '/index', meta: {title:'首页'}, component: index },
+    { path: '/friendLink', meta: {title:'友情链接'}, component: friendLink },
+    { name: 'linkDetail', path: '/friendLink:id', meta: {title: '查看链接'}, component: linkDetail, props: true},
     
     //装修学堂
-    { path: '/school', name: 'school', meta: {title:'装修学堂'}, component: school},
+    { path: '/school', meta: {title:'装修学堂'}, component: school},
 
     //团队与案例
-    { path: '/estate', name: 'estate', meta:{ title:'团队与案例' },component: estate },
-    { path: '/team', name: 'team', meta:{ title:'团队与案例' },component: team },
-    { path: '/designer', name: 'designer', meta:{ title:'团队与案例' },component: designer },
-    { path: '/desCase', name: 'desCase', meta:{ title:'团队与案例' },component: desCase },
-    { path: '/caseImg', name: 'caseImg', meta:{ title:'团队与案例' },component: caseImg }
+    { path: '/estate', meta:{ title:'团队与案例' },component: estate },
+    { path: '/team', meta:{ title:'团队与案例' },component: team },
+    { path: '/designer', meta:{ title:'团队与案例' },component: designer },
+    { path: '/desCase', meta:{ title:'团队与案例' },component: desCase },
+    { path: '/caseImg', meta:{ title:'团队与案例' },component: caseImg }
 
   ]
 })
