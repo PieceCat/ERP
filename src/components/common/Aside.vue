@@ -1,0 +1,54 @@
+<template>
+    <div>
+        <el-col :span="3">
+            <el-menu
+                :default-active="activeIndex"
+                class="el-menu-vertical-demo syl"
+                @select="handleSelect"  
+                background-color="#545c64"
+                text-color="#fff"
+                active-text-color="#ffd04b"
+                :router="true"
+                >
+                <el-menu-item :index="item.url" v-for="item in page" :key="item.id">
+                  <i class="el-icon-setting"></i>
+                  <span slot="title">
+                    {{item.pageName}}
+                  </span>
+                </el-menu-item>
+            </el-menu>
+        </el-col>
+    </div>
+</template>
+
+<script>
+export default {
+    data(){
+      return{
+        activeIndex: '/index',
+      }
+    },
+    methods:{
+      handleSelect(key, keyPath) {
+          console.log(key, keyPath);
+          this.activeIndex = key;
+      }
+    },
+    props:['page']
+}
+</script>
+
+<style scope lang="less">
+    .syl{
+      min-height: 900px;
+      background: rgb(84, 92, 100);
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+      &:hover {
+        color: rgb(255, 208, 75);
+      }
+    }
+</style>
