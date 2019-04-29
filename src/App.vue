@@ -6,28 +6,25 @@
 </template>
 
 <script>
-import Header from './components/common/Header.vue'
+import Header from "./components/common/Header.vue";
 export default {
-  name: 'App',
-  data(){
-    return {
-
-    }
+  name: "App",
+  data() {
+    return {};
   },
-  methods:{
-
-  },
-  components:{
+  methods: {},
+  components: {
     Header: Header
   }
-}
+};
 </script>
 
 <style lang="less">
-  html,body{
-    margin: 0;
-  };
-  .el-container{
-    padding-top: 15px;
-  }
+html,
+body {
+  margin: 0;
+}
+.el-container {
+  padding-top: 40px;
+}
 </style>
