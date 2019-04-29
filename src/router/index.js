@@ -22,15 +22,20 @@ import caseImg from '@/components/Team/caseImg'
 Vue.use(Router)
 
 let router = new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     { path: '/', redirect: '/index' },
     // 首页
-    { path: '/index', meta: { title: '首页' }, component: index },
-    { path: '/friendLink', meta: { title: '友情链接' }, component: friendLink },
-    { name: 'linkDetail', path: '/friendLink/linkDetail/:id', meta: { title: '查看链接' }, component: linkDetail, props: true },
-    { name: 'editLink', path: '/friendLink/editLink/:id', meta: { title: '编辑链接' }, component: editLink, props: true },
-    { name: 'addLink', path: '/friendLink/addLink', meta: { title: '添加链接' }, component: addLink, props: true },
+    { name: 'index', path: '/index', meta: { title: '首页' }, component: index },
+    {
+      name: 'friendLink', path: '/friendLink', meta: { title: '友情链接' }, component: friendLink,
+      children: [
+        { path: '/', component: friendLink, },
+        { name: 'linkDetail', path: 'linkDetail/:id', meta: { title: '查看链接' }, component: linkDetail, props: true },
+        { name: 'editLink', path: 'editLink/:id', meta: { title: '编辑链接' }, component: editLink, props: true },
+        { name: 'addLink', path: 'addLink', meta: { title: '添加链接' }, component: addLink },
+      ]
+    },
 
     //装修学堂
     { path: '/school', meta: { title: '装修学堂' }, component: school },
