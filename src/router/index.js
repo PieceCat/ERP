@@ -5,9 +5,10 @@ import Router from 'vue-router'
 //首页
 import index from '@/components/Index/index'
 import friendLink from '@/components/Index/friendLink'
-import linkDetail from '@/components/Index/linkDetail'
-import editLink from '@/components/Index/editLink'
-import addLink from '@/components/Index/addLink'
+import linkIndex from '@/components/Index/friendLink/friendLink'
+import linkDetail from '@/components/Index/friendLink/linkDetail'
+import editLink from '@/components/Index/friendLink/editLink'
+import addLink from '@/components/Index/friendLink/addLink'
 
 //装修学堂
 import school from '@/components/School/school'
@@ -30,7 +31,7 @@ let router = new Router({
     {
       name: 'friendLink', path: '/friendLink', meta: { title: '友情链接' }, component: friendLink,
       children: [
-        { path: '/', component: friendLink, },
+        { path: '/', meta: { title: '查看链接' }, component: linkIndex, props: true },
         { name: 'linkDetail', path: 'linkDetail/:id', meta: { title: '查看链接' }, component: linkDetail, props: true },
         { name: 'editLink', path: 'editLink/:id', meta: { title: '编辑链接' }, component: editLink, props: true },
         { name: 'addLink', path: 'addLink', meta: { title: '添加链接' }, component: addLink },

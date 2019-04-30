@@ -28,16 +28,15 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      this.activeIndex = key;
+      // console.log(key, keyPath);
+      // this.activeIndex = key;
+      // this.$router.push(key);
     },
     getNav() {
       let matched = this.$route.matched.filter(item => item.name);
       const first = matched[0];
-      if (first && first.name !== "首页") {
-        matched = [{ path: "/Index", meta: { title: "首页" } }].concat(matched);
-      }
-      console.log(first);
+      //动态改变导航跳转时，需要active的链接名字样式
+      this.activeIndex = "/" + first.name;
     }
   },
   mounted() {

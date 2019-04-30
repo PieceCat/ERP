@@ -4,22 +4,22 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    url:'',
-    linkData:{}
+    url: '',
+    linkData: {}
 }
 
-const getters = {   
-    isShow(state) {  
-       return state.url
+const getters = {
+    isShow(state) {
+        return state.url
     },
-    getChangedNum(){  
-       return state.url
+    getChangedNum() {
+        return state.url
     }
 };
 
 const mutations = {
-    showLinkdetail (state,data) {
-      state.data = data
+    showLinkdetail(state, data) {
+        state.data = data
     }
 }
 const store = new Vuex.Store({

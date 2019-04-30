@@ -47,11 +47,11 @@
     <el-row>
       <el-col :span="24" class="brand">
         <el-breadcrumb separator-class="el-icon-arrow-right">
+          <!-- 面包屑遍历数组，路径是唯一的值 并且如果对象数组中没有meta.title的值就隐藏该条面包屑-->
           <el-breadcrumb-item v-for="(item)  in levelList" :key="item.path" v-if="item.meta.title">
+            <!-- 跳转到数组中的path或者重定向地址 -->
             <router-link :to="item.redirect||item.path">{{item.meta.title}}</router-link>
           </el-breadcrumb-item>
-          <!-- <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-          <el-breadcrumb-item>活动详情</el-breadcrumb-item>-->
         </el-breadcrumb>
       </el-col>
     </el-row>
@@ -67,18 +67,23 @@ export default {
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      // console.log(key, keyPath);
-      // this.$store.commit("key");
-    },
+    handleSelect(key, keyPath) {},
     getBreadcrumb() {
+      // 过滤 路由方法中存在name属性值的对象，返回一个新数组
       let matched = this.$route.matched.filter(item => item.name);
+      //获取数组中的第一项
       const first = matched[0];
+      //如果第一项存在，并且第一项的name值不是首页，那么就是和首页同级的目录
       if (first && first.name !== "首页") {
+        // 面包屑就需要在获取到的数组前面加上 首页项数组
         matched = [{ path: "/Index", meta: { title: "首页" } }].concat(matched);
       }
+      // 所有带有 name以及meta等属性的对象所组成的数组赋值给levelList
       this.levelList = matched;
-      console.log(this.levelList, matched);
+      // console.log(
+      //   this.$route.matched,
+      //   this.$route.matched.filter(item => item.name)
+      // );
     }
   },
   mounted() {

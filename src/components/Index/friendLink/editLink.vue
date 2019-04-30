@@ -1,19 +1,18 @@
 <template>
   <div>
-    <Aside :page="page"></Aside>
     <el-container>
       <el-main>
         <el-row>
           <el-col :span="10" v-loading="loading">
-            <el-form ref="form" :model="form" label-width="80px">
+            <el-form ref="form" :model="data" label-width="80px">
               <el-form-item label="所属分站">
-                <el-select v-model="form.site" placeholder="请选择所属分站">
+                <el-select v-model="data.site" placeholder="请选择所属分站">
                   <el-option label="上海" value="shanghai"></el-option>
                   <el-option label="北京" value="beijing"></el-option>
                 </el-select>
               </el-form-item>
               <el-form-item label="链接类型">
-                <el-select v-model="form.type" placeholder="请选择链接类型">
+                <el-select v-model="data.linkType" placeholder="请选择链接类型">
                   <el-option label="友情链接" value="shanghai"></el-option>
                   <el-option label="合作伙伴" value></el-option>
                 </el-select>
@@ -23,23 +22,23 @@
                   <el-date-picker
                     type="date"
                     placeholder="选择日期"
-                    v-model="form.date1"
+                    v-model="data.addTime"
                     style="width: 100%;"
                   ></el-date-picker>
                 </el-col>
                 <el-col class="line" :span="2">-</el-col>
                 <el-col :span="11">
-                  <el-time-picker placeholder="添加时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+                  <el-time-picker placeholder="添加时间" v-model="data.addTime" style="width: 100%;"></el-time-picker>
                 </el-col>
               </el-form-item>
               <el-form-item label="是否有效">
-                <el-switch v-model="form.delivery"></el-switch>
+                <el-switch v-model="data.linkFlag"></el-switch>
               </el-form-item>
               <el-form-item label="链接名称*">
-                <el-input v-model="form.name"></el-input>
+                <el-input v-model="data.linkName"></el-input>
               </el-form-item>
               <el-form-item label="链接地址*">
-                <el-input v-model="form.url"></el-input>
+                <el-input v-model="data.linkUrl"></el-input>
               </el-form-item>
               <el-form-item label="链接备注">
                 <el-input type="textarea" v-model="form.desc"></el-input>
@@ -73,14 +72,9 @@
 </template>
 
 <script>
-import Aside from "@/components/common/Aside";
 export default {
   data() {
     return {
-      page: [
-        { pageName: "后台首页", url: "/index" },
-        { pageName: "友情链接", url: "/friendLink" }
-      ],
       form: {
         site: "",
         type: "",
@@ -104,7 +98,9 @@ export default {
       loading: false
     };
   },
-  created() {},
+  created() {
+    console.log(this.data);
+  },
   methods: {
     onSubmit() {
       this.loading = true;
@@ -138,10 +134,8 @@ export default {
     beforeRemove() {},
     handleExceed() {}
   },
-  computed: {},
-  components: {
-    Aside
-  }
+  props: ["id", "data"],
+  computed: {}
 };
 </script>
 
