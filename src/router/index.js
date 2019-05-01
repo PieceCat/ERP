@@ -11,7 +11,9 @@ import editLink from '@/components/Index/friendLink/editLink'
 import addLink from '@/components/Index/friendLink/addLink'
 
 //装修学堂
-import school from '@/components/School/school'
+// import school from '@/components/School/school'
+import articalManger from '@/components/School/articalManger'
+import articalSort from '@/components/School/articalSort'
 
 //团队与案例
 import estate from '@/components/Team/estate'
@@ -31,7 +33,7 @@ let router = new Router({
     {
       name: 'friendLink', path: '/friendLink', meta: { title: '友情链接' }, component: friendLink,
       children: [
-        { path: '/', meta: { title: '查看链接' }, component: linkIndex, props: true },
+        { path: '/', meta: { title: '链接列表' }, component: linkIndex, props: true },
         { name: 'linkDetail', path: 'linkDetail/:id', meta: { title: '查看链接' }, component: linkDetail, props: true },
         { name: 'editLink', path: 'editLink/:id', meta: { title: '编辑链接' }, component: editLink, props: true },
         { name: 'addLink', path: 'addLink', meta: { title: '添加链接' }, component: addLink },
@@ -39,7 +41,17 @@ let router = new Router({
     },
 
     //装修学堂
-    { path: '/school', meta: { title: '装修学堂' }, component: school },
+    {
+      name: 'articalManger', path: '/articalManger', meta: { title: '文章管理' }, component: articalManger,
+      children: [
+        // { path: '/', meta: { title: '装修学堂' }, component: articalManger },
+        // { path: '/', meta: { title: '装修学堂' }, component: articalManger },
+        // { path: '/', meta: { title: '装修学堂' }, component: articalManger }
+      ]
+    },
+    { name: 'articalSort', path: '/articalSort', meta: { title: '文章分类' }, component: articalSort },
+
+
 
     //团队与案例
     { path: '/estate', meta: { title: '团队与案例' }, component: estate },

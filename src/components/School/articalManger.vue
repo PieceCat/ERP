@@ -1,7 +1,6 @@
 <template>
   <div>
     <Aside :page="page"></Aside>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -11,8 +10,8 @@ export default {
   data() {
     return {
       page: [
-        { pageName: "后台首页", url: "/index" },
-        { pageName: "友情链接", url: "/friendLink" }
+        { pageName: "文章管理", url: "/articalManger" },
+        { pageName: "文章分类", url: "/articalSort" }
       ]
     };
   },

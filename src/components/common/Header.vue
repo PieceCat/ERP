@@ -18,7 +18,7 @@
           :router="true"
         >
           <el-menu-item index="/index">首页</el-menu-item>
-          <el-menu-item index="/school">装修学堂</el-menu-item>
+          <el-menu-item index="/articalManger">装修学堂</el-menu-item>
           <el-menu-item index="/estate">团队&案例</el-menu-item>
           <el-menu-item index="4">材料展厅</el-menu-item>
           <el-menu-item index="5">活动专题</el-menu-item>
@@ -84,13 +84,21 @@ export default {
       //   this.$route.matched,
       //   this.$route.matched.filter(item => item.name)
       // );
+    },
+    getActive() {
+      let matched = this.$route.matched.filter(item => item.name);
+      const first = matched[0];
+      console.log(matched);
+      this.activeIndex = "/" + first.name;
     }
   },
   mounted() {
+    // this.getActive();
     this.getBreadcrumb();
   },
   watch: {
     $route(to, from) {
+      // this.getActive();
       this.getBreadcrumb();
     }
   }
